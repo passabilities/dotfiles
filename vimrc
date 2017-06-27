@@ -29,9 +29,9 @@ syntax on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all 
+" The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","
+let mapleader="\<space>"
 
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
@@ -86,7 +86,7 @@ set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
 
-set wildmode=list:longest
+set wildmode=longest:list:full
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
@@ -102,8 +102,8 @@ set wildignore+=*.png,*.jpg,*.gif
 "
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
+set scrolloff=5         "Start scrolling when we're 5 lines away from margins
+set sidescrolloff=10
 set sidescroll=1
 
 " ================ Search ===========================
@@ -113,5 +113,82 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
+" =========================================================
 " ================ Custom Settings ========================
+" =========================================================
 so ~/.yadr/vim/settings.vim
+
+" =============== Styling ==========
+set background=dark
+colorscheme solarized
+
+nnoremap ; :
+
+set cursorline
+
+" Define font and size of window
+set guifont=Monaco:h12
+set lines=100
+set columns=250
+
+let g:solarized_termcolors=256
+
+" NERDTree settings
+let NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_open_on_gui_startup=0
+
+" CtrlP settings
+let g:ctrlp_working_path_mode = 'a' " Search within cwd
+" line - search within files
+let g:ctrlp_extensions = ['line']
+" Ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" SuperTab settings
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Vim auto save settings
+let g:auto_save = 0  " Disable AutoSave on Vim startup
+let g:auto_save_in_insert_mode = 0  " Do not save while in insert mode
+let g:auto_save_silent = 1  " Do not display the auto-save notification
+
+" Syntastic file checker settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['standard']
+
+" CoffeeScript tags settings
+let g:CoffeeAutoTagFile='./coffeetags'       " Name of the generated tag file (Default: ./tags)
+let g:CoffeeAutoTagIncludeVars=1  " Includes variables (Default: 0 [false])
+
+" Search for closest tags file
+set tags=./tags,tags;$HOME
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Mappings for git
+nnoremap <leader>gst :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gbl :Gblame<CR>
+
+" Show indent guides
+au VimEnter * IndentGuidesEnable
+" Start Tagbar
+au VimEnter,TabEnter * TagbarOpen
+
+" If file is `*.java`
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+
+" Auto highlight word under cursor
+:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
