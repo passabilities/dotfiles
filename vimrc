@@ -24,9 +24,6 @@ set autoread                    "Reload files changed outside vim
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
-"turn on syntax highlighting
-syntax on
-
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
@@ -119,6 +116,7 @@ set smartcase       " ...unless we type a capital
 so ~/.yadr/vim/settings.vim
 
 " =============== Styling ==========
+syntax enable
 set background=dark
 colorscheme solarized
 
@@ -127,11 +125,9 @@ nnoremap ; :
 set cursorline
 
 " Define font and size of window
-set guifont=Monaco:h12
+set guifontset=Monospace\ 12
 set lines=100
 set columns=250
-
-let g:solarized_termcolors=256
 
 " NERDTree settings
 let NERDTreeShowBookmarks=1
@@ -164,12 +160,10 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['standard']
 
-" CoffeeScript tags settings
-let g:CoffeeAutoTagFile='./coffeetags'       " Name of the generated tag file (Default: ./tags)
-let g:CoffeeAutoTagIncludeVars=1  " Includes variables (Default: 0 [false])
-
 " Search for closest tags file
 set tags=./tags,tags;$HOME
+let g:easytags_async=1
+let g:easytags_auto_highlight=0
 
 " Easy window navigation
 map <C-h> <C-w>h
@@ -184,11 +178,13 @@ nnoremap <leader>gbl :Gblame<CR>
 
 " Show indent guides
 au VimEnter * IndentGuidesEnable
+
 " Start Tagbar
-au VimEnter,TabEnter * TagbarOpen
+" Disable Tagbar auto open for now
+"au VimEnter,TabEnter * TagbarOpen
 
 " If file is `*.java`
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+"au Filetype java setlocal omnifunc=javacomplete#Complete
 
 " Auto highlight word under cursor
-:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+"call AutoHighlightToggle()

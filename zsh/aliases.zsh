@@ -27,7 +27,10 @@ alias psr='ps aux | grep ruby'
 # Moving around
 alias cdb='cd -'
 alias cls='clear;ls'
-alias projects='cd ~/Documents/projects'
+mkcd() {
+  mkdir $1
+  cd $1
+}
 
 # Show human friendly numbers and colors
 alias df='df -h'
@@ -229,7 +232,11 @@ alias dbmu='spring rake db:migrate:up'
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
 # NGINX
-alias ne='vim /usr/local/etc/nginx/nginx.conf'
+alias ne='vim /etc/nginx/nginx.conf'
 alias nst='sudo nginx'
 alias nstp='sudo nginx -s stop'
 alias nrst='nstp; nst'
+
+# fasd
+alias v='f -e vim' # quick opening files with vim
+alias o='a -e xdg-open' # quick opening files with xdg-open

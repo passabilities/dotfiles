@@ -12,6 +12,7 @@ filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 set rtp+=~/.vim/vundles/ "Submodules
+set rtp+=~/.vim/plugin/
 call vundle#rc()
 
 " let Vundle manage Vundle (required)
@@ -23,6 +24,8 @@ Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/javacomplete'
+Plugin 'xolox/vim-easytags'
+Plugin 'tomlion/vim-solidity'
 
 " YADR's vundles are split up by category into smaller files
 " This reduces churn and makes it easier to fork. See
