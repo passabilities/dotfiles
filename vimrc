@@ -118,14 +118,14 @@ so ~/.yadr/vim/settings.vim
 " =============== Styling ==========
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 
 nnoremap ; :
 
 set cursorline
 
 " Define font and size of window
-set guifontset=Monospace\ 12
+set guifont=Monospace\ 10
 set lines=100
 set columns=250
 
@@ -152,6 +152,9 @@ let g:auto_save_silent = 1  " Do not display the auto-save notification
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline+=%{kite#statusline()}
+"set statusline+=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+"set laststatus=2
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -164,6 +167,10 @@ let g:syntastic_javascript_checkers = ['standard']
 set tags=./tags,tags;$HOME
 let g:easytags_async=1
 let g:easytags_auto_highlight=0
+
+" ALE Linter
+let g:ale_fixers = ['eslint', 'prettier']
+let g:ale_fix_on_save = 1
 
 " Easy window navigation
 map <C-h> <C-w>h

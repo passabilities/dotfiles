@@ -37,7 +37,7 @@
   co = checkout                     # checkout
 
   # cherry-pick
-  cp = cherry-pick -x               # grab a change from a branch
+  cp = cherry-pick                  # grab a change from a branch
 
   # diff
   d = diff                          # diff unstaged changes
@@ -45,7 +45,7 @@
   last = diff HEAD^                 # diff last committed change
 
   # log
-  l = log --graph --date=relative --pretty=format:\"%C(yellow)%h %Creset%C(yellow)%d %Creset %s %C(cyan)%C(bold)%d%Creset %C(cyan)(%cr) %Creset%C(green)(%cn)%Creset\"
+  l = log --graph --date=relative --pretty=format:\"%C(yellow)%h %C(red)%d %Creset %s %C(cyan)(%cr) %C(green)(%cn)\"
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
   simple = log --pretty=format:\" * %s\"
@@ -122,3 +122,20 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[init]
+	defaultBranch = master
+[commit]
+	gpgSign = true
+[user]
+	signingKey = C8294703F4B16A4C845E7750023F94E29B1431D3
+[tag]
+	forceSignAnnotated = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /home/passa/.config/netlify/helper/git-config

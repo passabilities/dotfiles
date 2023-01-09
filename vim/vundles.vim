@@ -24,8 +24,9 @@ Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/javacomplete'
-Plugin 'xolox/vim-easytags'
 Plugin 'tomlion/vim-solidity'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'w0rp/ale'
 
 " YADR's vundles are split up by category into smaller files
 " This reduces churn and makes it easier to fork. See

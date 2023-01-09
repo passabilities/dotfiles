@@ -74,15 +74,7 @@ alias ze='vim ~/.zshrc'
 alias reload='source ~/.zshrc'
 
 # Git Aliases
-gprev() {
-  if [[ -z $1 ]]
-  then
-    amount=1
-  else
-    amount=$1
-  fi
-  gco @"{-$amount}"
-}
+alias g='git'
 alias gs='git status'
 alias gstsh='git stash'
 alias gst='git stash'
@@ -90,9 +82,9 @@ alias gsp='git stash pop'
 alias gsa='git stash apply'
 alias gsh='git show'
 alias gi='vim .gitignore'
-alias gcm='git ci -m'
-alias gcim='git ci -m'
-alias gci='git ci'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcnm='git commit -nm'
 alias gco='git co'
 alias gcb='git checkout -b'
 alias gcp='git cp'
@@ -111,7 +103,7 @@ alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbi='git rebase --interactive'
 alias gl='git l'
-alias gla='git l --branches --remotes --tags'
+alias gla='git l --branches --remotes --tags $(git reflog show --format="%h" stash)'
 alias co='git co'
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
@@ -127,19 +119,10 @@ alias gtr='grbr track'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
 alias gps='git push'
+alias gpsF='git push --force'
 alias gpsh='git push -u origin `git rev-parse --abbrev-ref HEAD`'
 alias grs='git reset'
-grh() {
-  if [[ -z $1 ]]
-  then
-    amount=0
-  else
-    amount=$1
-  fi
-
-  git reset HEAD~$amount
-}
-alias grhh='git reset HEAD --hard'
+alias grhH='git reset HEAD --hard'
 alias gcln='git clean'
 alias gclndf='git clean -df'
 alias gclndfx='git clean -dfx'
@@ -150,6 +133,27 @@ alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+# Checkout previous branch
+gprev() {
+  if [[ -z $1 ]]
+  then
+    amount=1
+  else
+    amount=$1
+  fi
+  gco @"{-$amount}"
+}
+# Reset the HEAD
+grh() {
+  if [[ -z $1 ]]
+  then
+    amount=0
+  else
+    amount=$1
+  fi
+
+  git reset HEAD~$amount
+}
 
 # Common shell functions
 alias less='less -r'
@@ -232,7 +236,7 @@ alias dbmu='spring rake db:migrate:up'
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
 # NGINX
-alias ne='vim /etc/nginx/nginx.conf'
+alias ne='sudo vim /etc/nginx/nginx.conf'
 alias nst='sudo nginx'
 alias nstp='sudo nginx -s stop'
 alias nrst='nstp; nst'
@@ -241,4 +245,10 @@ alias nrst='nstp; nst'
 alias v='f -e vim' # quick opening files with vim
 alias o='a -e xdg-open' # quick opening files with xdg-open
 
-alias pubip='curl ipinfo.io/ip'
+# Custom
+alias eth2web='ssh -Y -L 7500:10.128.0.4:7500 -L 3500:10.128.0.4:3500 35.208.58.103'
+alias pubip='curl -s ipinfo.io/ip | less'
+alias clip='xclip -selection clipboard'
+
+# ROG 
+alias kbc='rogauracore'
