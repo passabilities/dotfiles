@@ -106,7 +106,7 @@
 [push]
 	default = simple
 [core]
-  autocrlf = false
+	autocrlf = input
   editor = vim
   excludesfile = ~/.yadr/git/gitignore
 [advice]
@@ -120,14 +120,10 @@
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
-[include]
-  path = .gitconfig.user
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [commit]
 	gpgSign = true
-[user]
-	signingKey = C8294703F4B16A4C845E7750023F94E29B1431D3
 [tag]
 	forceSignAnnotated = true
 [filter "lfs"]
@@ -136,6 +132,17 @@
 	process = git-lfs filter-process
 	required = true
 
+# User configs
+[include]
+  path = .gitconfig.user
+[includeIf "gitdir:projects/Teller/"]
+  path = .gitconfig.user.teller
+[includeIf "gitdir:projects/Clarity Credit/"]
+  path = .gitconfig.user.clarity
+
 # This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
 [include]
   path = /home/passa/.config/netlify/helper/git-config
+
+[prompt]
+  showinfo = true
