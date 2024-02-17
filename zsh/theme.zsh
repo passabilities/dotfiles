@@ -1,1 +1,1 @@
-prompt agnoster
+prompt paradox
