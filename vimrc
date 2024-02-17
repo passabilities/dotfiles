@@ -126,8 +126,8 @@ set cursorline
 
 " Define font and size of window
 set guifont=Monospace\ 10
-set lines=100
-set columns=250
+"set lines=40
+"set columns=150
 
 " NERDTree settings
 let NERDTreeShowBookmarks=1
@@ -171,6 +171,9 @@ let g:easytags_auto_highlight=0
 " ALE Linter
 let g:ale_fixers = ['eslint', 'prettier']
 let g:ale_fix_on_save = 1
+
+" SnipMate
+let g:snipMate = { 'snippet_version' : 1 }
 
 " Easy window navigation
 map <C-h> <C-w>h
