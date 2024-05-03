@@ -139,6 +139,8 @@
   path = .gitconfig.user.teller
 [includeIf "gitdir:projects/Clarity Credit/"]
   path = .gitconfig.user.clarity
+[includeIf "gitdir:projects/Transak/"]
+  path = .gitconfig.user.transak
 
 # This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
 [include]
