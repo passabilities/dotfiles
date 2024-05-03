@@ -146,6 +146,9 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " Vim auto save settings
 autocmd CursorHold * silent update
 
+" Disable INSERT mode for readonly files
+autocmd BufReadPost * if &readonly | setlocal nomodifiable | endif
+
 " Syntastic file checker settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
