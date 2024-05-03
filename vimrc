@@ -184,6 +184,9 @@ map <C-l> <C-w>l
 nnoremap <leader>gst :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gbl :Gblame<CR>
+nnoremap <leader>ghp <Plug>(GitGutterPreviewHunk)
+nnoremap <leader>ghs <Plug>(GitGutterStageHunk)
+nnoremap <leader>ghu <Plug>(GitGutterUndoHunk)
 
 " Show indent guides
 au VimEnter * IndentGuidesEnable
