@@ -144,9 +144,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Vim auto save settings
-let g:auto_save = 0  " Disable AutoSave on Vim startup
-let g:auto_save_in_insert_mode = 0  " Do not save while in insert mode
-let g:auto_save_silent = 1  " Do not display the auto-save notification
+autocmd CursorHold * silent update
 
 " Syntastic file checker settings
 set statusline+=%#warningmsg#
