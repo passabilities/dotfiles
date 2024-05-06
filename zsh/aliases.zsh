@@ -22,7 +22,10 @@ alias yip='yadr init-plugins'
 # PS
 alias psa="ps aux"
 psg() {
-  ps aux | grep "$1" | grep -v grep
+    ps -efww | grep -i --color=always "[${1:0:1}]${1:1}" #| grep -v "$@"
+}
+psgw() {
+  watch --color --no-wrap --differences --exec $SHELL -c "source ${(%):-%x}; psg $1 | grep -v 'source.+; psg'"
 }
 psgid() {
   psg "$1" | sed -E 's/^[^0-9]*([0-9]+).*$/\1/'
